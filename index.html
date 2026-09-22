@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#5c2a2e" />
+    <title>Mohammad Muzammil &amp; Shameem — Mirisik</title>
+    <meta
+      name="description"
+      content="Thank you for being part of our special day."
+    />
+    <meta property="og:title" content="Mohammad Muzammil & Shameem — Mirisik" />
+    <meta
+      property="og:description"
+      content="Thank you for being part of our special day."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#home">Skip to content</a>
+
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a class="nav__brand" href="#home">MIRISIK</a>
+        <button
+          class="nav__toggle"
+          id="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          <span class="sr-only">Menu</span>
+          <span class="nav__bars" aria-hidden="true"></span>
+        </button>
+        <nav class="nav__menu" id="nav-menu" aria-label="Primary">
+          <a href="#home">Home</a>
+          <a href="#details">Details</a>
+          <a href="#pov">POV</a>
+          <a href="#messages">Messages</a>
+          <a href="#memories">Memories</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero__bg" id="hero-bg" aria-hidden="true"></div>
+        <div class="hero__veil" aria-hidden="true"></div>
+        <div class="hero__ornament hero__ornament--tl" aria-hidden="true"></div>
+        <div class="hero__ornament hero__ornament--br" aria-hidden="true"></div>
+        <div class="hero__content">
+          <img
+            class="hero__logo"
+            src="assets/images/monogram.png"
+            alt="Mohammad Muzammil and Shameem wedding monogram"
+          />
+          <h1 class="hero__title">MIRISIK</h1>
+          <p class="hero__lede">
+            Thank you for being part of<br />
+            our special day.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section--thanks" id="thanks">
+        <div class="wrap wrap--narrow">
+          <p class="eyebrow">A note from our families</p>
+          <h2>Thank You For Coming</h2>
+          <div class="divider" aria-hidden="true"></div>
+          <p class="lead">
+            Your presence means so much to us.
+          </p>
+          <p>
+            Thank you for taking the time to celebrate this special moment with
+            our families. May this Mirisik be filled with warmth, doa, and
+            memories we will keep close.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section--details" id="details">
+        <div class="wrap">
+          <p class="eyebrow">Gather with us</p>
+          <h2>Event Details</h2>
+          <div class="divider" aria-hidden="true"></div>
+          <div class="details-grid">
+            <article class="detail-card">
+              <p class="detail-card__label">Date</p>
+              <p class="detail-card__value" data-config="eventDate">[DATE]</p>
+            </article>
+            <article class="detail-card">
+              <p class="detail-card__label">Time</p>
+              <p class="detail-card__value" data-config="eventTime">[TIME]</p>
+            </article>
+            <article class="detail-card">
+              <p class="detail-card__label">Location</p>
+              <p class="detail-card__value" data-config="location">[LOCATION]</p>
+              <p class="detail-card__sub" data-config="address">[ADDRESS]</p>
+            </article>
+          </div>
+          <p class="details-note">
+            Additional information can be added here — parking, dress code, or
+            family notes.
+          </p>
+          <a
+            class="btn"
+            id="maps-link"
+            href="#details"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Location
+          </a>
+        </div>
+      </section>
+
+      <section class="section section--pov" id="pov">
+        <div class="wrap">
+          <p class="eyebrow">From your eyes</p>
+          <h2>Share Your POV</h2>
+          <div class="divider" aria-hidden="true"></div>
+          <p class="lead">Captured a special moment today?</p>
+          <p>
+            Share your favourite POV from the event with the bride and groom.
+            Photos are collected privately, reviewed, then selected for the
+            memories gallery — nothing is published automatically.
+          </p>
+          <a class="btn" href="#photo-form">Share Your Photo</a>
+          <ol class="flow">
+            <li>Share Your POV</li>
+            <li>Google Form upload</li>
+            <li>Saved to Google Drive</li>
+            <li>Reviewed by the family</li>
+            <li>Selected photos added to Memories</li>
+          </ol>
+
+          <div class="form-panel" id="photo-form">
+            <h3>Upload a photo</h3>
+            <p class="form-hint">
+              File uploads through Google Forms may require a Google account,
+              depending on your form settings.
+            </p>
+            <!-- INSERT GOOGLE FORM EMBED HERE (photo form) -->
+            <div id="photo-form-embed" class="form-embed"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--messages" id="messages">
+        <div class="wrap">
+          <p class="eyebrow">Digital guestbook</p>
+          <h2>Leave a Message</h2>
+          <div class="divider" aria-hidden="true"></div>
+          <p class="lead">
+            Leave your message for the<br />
+            new bride and groom
+          </p>
+          <p>
+            Write something they can look back on and remember from this special
+            day.
+          </p>
+
+          <div class="form-panel" id="message-form">
+            <h3>Write a note</h3>
+            <p class="form-hint">
+              Suggested fields: Name (required) and Message (required).
+              Submissions go to Google Sheets for review before they appear
+              below.
+            </p>
+            <!-- INSERT GOOGLE FORM EMBED HERE (guestbook form) -->
+            <div id="message-form-embed" class="form-embed"></div>
+          </div>
+
+          <h3 class="wall-heading">Messages From Our Guests</h3>
+          <p class="form-hint">
+            Only messages marked <strong>YES</strong> in the Approved column are
+            shown.
+          </p>
+          <div
+            class="message-wall"
+            id="message-wall"
+            tabindex="0"
+            aria-label="Scrolling guestbook messages. Hover or focus to pause."
+          >
+            <div class="message-wall__track" id="message-track"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--gallery" id="memories">
+        <div class="wrap">
+          <p class="eyebrow">Keepsakes</p>
+          <h2>Our Memories</h2>
+          <div class="divider" aria-hidden="true"></div>
+          <p>
+            Selected moments from the day. Approved photos from the Google Form
+            are pulled in automatically from the published sheet and shown here.
+            If you want to keep some static images too, add them in
+            <code>script.js</code> under <code>galleryImages</code>.
+          </p>
+          <div class="gallery" id="gallery"></div>
+        </div>
+      </section>
+    </main>
+
+    <div
+      class="lightbox"
+      id="lightbox"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="lightbox-caption"
+    >
+      <button class="lightbox__close" id="lightbox-close" type="button">
+        Close
+      </button>
+      <img id="lightbox-image" alt="" />
+      <p id="lightbox-caption"></p>
+    </div>
+
+    <footer class="footer" id="footer">
+      <div class="wrap wrap--narrow">
+        <p class="footer__mark">MIRISIK</p>
+        <p>
+          Thank you for being part of<br />
+          our special day.
+        </p>
+        <p class="footer__credit">
+          Website crafted by<br />
+          <strong>Rai</strong>
+        </p>
+        <nav class="footer__links" aria-label="Contact Rai">
+          <a
+            id="link-contact"
+            href="https://linktr.ee/Rai0611"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contact Me
+          </a>
+        </nav>
+        <p class="footer__copy">© 2026</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
