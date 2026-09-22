@@ -437,14 +437,11 @@ function normalizeGoogleDriveUrl(rawUrl) {
   const openMatch = url.match(/[?&]id=([^&]+)/i);
   const fileMatch = url.match(/\/file\/d\/([^/]+)/i);
 
-  if (openMatch?.[1]) {
-    return `https://drive.google.com/uc?export=view&id=${openMatch[1]}`;
+   let fileId = openMatch?.[1] || fileMatch?.[1];
+  
+  if (fileId) {
+    return `https://drive.google.com/uc?id=${fileId}&export=download`;
   }
-
-  if (fileMatch?.[1]) {
-    return `https://drive.google.com/uc?export=view&id=${fileMatch[1]}`;
-  }
-
   return url;
 }
 
