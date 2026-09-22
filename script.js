@@ -50,8 +50,6 @@ const prefersReducedMotion = window.matchMedia(
 
 const CARD_ICONS = ["💌", "🌸", "✨", "💍", "💕"];
 let dynamicGalleryImages = [];
-let lastImageCount = 0;
-let galleryPolling = null;
 
 function isPlaceholder(value) {
   if (!value) return true;
@@ -125,11 +123,6 @@ function renderForm(containerId, url, label) {
 
   if (isPlaceholder(url)) {
     box.innerHTML = `<div class="form-placeholder">Paste the ${label} Google Form embed URL in <code>script.js</code> → <code>siteConfig</code>.</div>`;
-    return;
-  }
-
-  if (url.includes("docs.google.com/forms")) {
-    box.innerHTML = `<a class="btn" href="${url}" target="_blank" rel="noopener noreferrer">Open ${label}</a>`;
     return;
   }
 
@@ -298,35 +291,18 @@ async function loadGalleryFromSheet() {
     return;
   }
 
+  console.log("Loading memories from:", siteConfig.memoriesCsvUrl);
   try {
     const response = await fetch(siteConfig.memoriesCsvUrl);
     if (!response.ok) throw new Error("HTTP " + response.status);
     const text = await response.text();
-    const newImages = galleryImagesFromCsv(text);
-    
-    if (newImages.length !== lastImageCount) {
-      console.log("Gallery updated:", lastImageCount, "→", newImages.length, "photos");
-      lastImageCount = newImages.length;
-      dynamicGalleryImages = newImages;
-      renderGallery();
-    }
+    console.log("CSV loaded, length:", text.length);
+    dynamicGalleryImages = galleryImagesFromCsv(text);
+    renderGallery();
   } catch (error) {
     console.error("Error loading memories sheet:", error);
-  }
-}
-
-function startGalleryPolling() {
-  if (!isPlaceholder(siteConfig.memoriesCsvUrl)) {
-    console.log("Gallery auto-refresh started (every 15 seconds)");
-    loadGalleryFromSheet();
-    galleryPolling = setInterval(loadGalleryFromSheet, 15000);
-  }
-}
-
-function stopGalleryPolling() {
-  if (galleryPolling) {
-    clearInterval(galleryPolling);
-    console.log("Gallery auto-refresh stopped");
+    dynamicGalleryImages = [];
+    renderGallery();
   }
 }
 
@@ -442,11 +418,14 @@ function normalizeGoogleDriveUrl(rawUrl) {
   const openMatch = url.match(/[?&]id=([^&]+)/i);
   const fileMatch = url.match(/\/file\/d\/([^/]+)/i);
 
-   let fileId = openMatch?.[1] || fileMatch?.[1];
-  
-  if (fileId) {
-    return `https://drive.google.com/uc?id=${fileId}&export=download`;
+  if (openMatch?.[1]) {
+    return `https://drive.google.com/uc?export=view&id=${openMatch[1]}`;
   }
+
+  if (fileMatch?.[1]) {
+    return `https://drive.google.com/uc?export=view&id=${fileMatch[1]}`;
+  }
+
   return url;
 }
 
@@ -492,4 +471,4 @@ initLightbox();
 initNav();
 initReveal();
 initMessageWallTouchPause();
-startGalleryPolling();
+loadGalleryFromSheet();
