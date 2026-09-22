@@ -128,6 +128,11 @@ function renderForm(containerId, url, label) {
     return;
   }
 
+  if (url.includes("docs.google.com/forms")) {
+    box.innerHTML = `<a class="btn" href="${url}" target="_blank" rel="noopener noreferrer">Open ${label}</a>`;
+    return;
+  }
+
   const iframe = document.createElement("iframe");
   iframe.src = toEmbedUrl(url);
   iframe.title = label;
